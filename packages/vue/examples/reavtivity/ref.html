@@ -11,20 +11,18 @@
   <div id="app"></div>
   <script>
 
-    const { reactive, effect } = Vue
+    const { ref, effect } = Vue
 
-    const obj = reactive({
+    const obj = ref({
       name: '张三'
     })
 
-    // effect(() => {
-    //   document.querySelector('#app').innerHTML = obj.name
-    // })
-
-    document.querySelector('#app').innerHTML = obj.name
-
+    effect(() => {
+      document.querySelector('#app').innerHTML = obj.value.name
+    })
+    
     setTimeout(() => {
-      obj.name = '李四'
+      obj.value.name = '李四'
     }, 2000);
 
   </script>
